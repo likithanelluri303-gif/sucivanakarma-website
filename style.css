@@ -7,23 +7,70 @@ scroll-behavior:smooth;
 
 body{
 font-family:'Poppins',sans-serif;
-background:#f8f3ea;
+background:
+linear-gradient(rgba(248,243,234,0.96), rgba(248,243,234,0.96)),
+url('silk.jpg');
+background-size:cover;
+background-attachment:fixed;
 color:#3b2a1c;
 line-height:1.8;
+overflow-x:hidden;
 }
+
+/* Decorative Embroidery Pattern */
+body::before{
+content:"";
+position:fixed;
+top:0;
+left:0;
+width:100%;
+height:100%;
+background:
+radial-gradient(circle at top left, rgba(122,59,18,0.08) 0%, transparent 25%),
+radial-gradient(circle at bottom right, rgba(212,175,55,0.08) 0%, transparent 25%);
+pointer-events:none;
+z-index:-1;
+}
+
+/* HERO SECTION */
 
 .hero{
 height:100vh;
-background:url('images/hero.jpg') center/cover no-repeat;
+background:
+linear-gradient(rgba(0,0,0,0.65), rgba(0,0,0,0.65)),
+url('hero.jpg') center/cover no-repeat;
 position:relative;
 display:flex;
 justify-content:center;
 align-items:center;
 text-align:center;
+overflow:hidden;
+}
+
+/* Decorative Thread Border */
+
+.hero::before{
+content:"";
+position:absolute;
+top:20px;
+left:20px;
+right:20px;
+bottom:20px;
+border:3px solid rgba(244,213,141,0.7);
+border-radius:20px;
+background-image:
+repeating-linear-gradient(
+45deg,
+transparent,
+transparent 10px,
+rgba(244,213,141,0.15) 10px,
+rgba(244,213,141,0.15) 20px
+);
+pointer-events:none;
 }
 
 .overlay{
-background:rgba(0,0,0,0.65);
+background:rgba(0,0,0,0.55);
 padding:60px;
 width:100%;
 height:100%;
@@ -31,19 +78,22 @@ display:flex;
 flex-direction:column;
 justify-content:center;
 align-items:center;
+backdrop-filter:blur(3px);
 }
 
 .hero h1{
 font-size:5rem;
 color:#f4d58d;
 font-family:'Cinzel',serif;
-letter-spacing:5px;
+letter-spacing:6px;
+text-shadow:4px 4px 12px rgba(0,0,0,0.8);
 }
 
 .hero h2{
 font-size:2rem;
 color:white;
 margin-top:20px;
+text-shadow:2px 2px 10px black;
 }
 
 .subtitle{
@@ -51,17 +101,42 @@ margin-top:20px;
 font-size:1.2rem;
 color:#f5f5f5;
 width:70%;
+text-shadow:2px 2px 6px black;
 }
+
+/* TEAM BOX */
 
 .team{
 margin-top:40px;
-background:rgba(0,0,0,0.45);
+background:rgba(58,29,11,0.65);
 padding:35px;
 border:2px solid #f4d58d;
-border-radius:12px;
-backdrop-filter:blur(5px);
+border-radius:18px;
+backdrop-filter:blur(8px);
 width:420px;
-box-shadow:0 0 20px rgba(244,213,141,0.4);
+box-shadow:0 0 30px rgba(244,213,141,0.4);
+position:relative;
+overflow:hidden;
+}
+
+/* Embroidery Decorative Corners */
+
+.team::before,
+.team::after{
+content:"✦";
+position:absolute;
+font-size:2rem;
+color:#f4d58d;
+}
+
+.team::before{
+top:10px;
+left:15px;
+}
+
+.team::after{
+bottom:10px;
+right:15px;
 }
 
 .team h3{
@@ -75,7 +150,7 @@ text-shadow:2px 2px 5px black;
 
 .team p{
 color:#ffffff;
-font-size:1.3rem;
+font-size:1.2rem;
 font-weight:600;
 margin:12px 0;
 font-family:'Poppins',sans-serif;
@@ -83,12 +158,16 @@ text-shadow:2px 2px 6px black;
 letter-spacing:0.5px;
 }
 
+/* NAVBAR */
+
 nav{
-background:#5a2a0c;
+background:linear-gradient(to right,#3a1d0b,#7a3b12,#3a1d0b);
 padding:15px;
 position:sticky;
 top:0;
 z-index:1000;
+box-shadow:0 4px 12px rgba(0,0,0,0.3);
+border-bottom:2px solid #d4af37;
 }
 
 nav ul{
@@ -106,20 +185,47 @@ nav ul li a{
 text-decoration:none;
 color:white;
 font-weight:500;
+font-size:1rem;
+letter-spacing:1px;
 transition:0.3s;
+position:relative;
+}
+
+nav ul li a::after{
+content:"";
+position:absolute;
+left:0;
+bottom:-5px;
+width:0;
+height:2px;
+background:#f4d58d;
+transition:0.4s;
+}
+
+nav ul li a:hover::after{
+width:100%;
 }
 
 nav ul li a:hover{
 color:#f4d58d;
 }
 
+/* SECTIONS */
+
 .section{
-padding:80px 10%;
+padding:90px 10%;
+position:relative;
 }
 
 .dark{
-background:#efe2cf;
+background:
+linear-gradient(rgba(239,226,207,0.94), rgba(239,226,207,0.94)),
+url('tradition.jpg');
+background-size:cover;
+background-attachment:fixed;
 }
+
+/* CONTENT */
 
 .content{
 display:flex;
@@ -138,34 +244,58 @@ min-width:300px;
 }
 
 .text h2{
-font-size:2.5rem;
+font-size:2.7rem;
 margin-bottom:20px;
 font-family:'Cinzel',serif;
 color:#7a3b12;
+position:relative;
+}
+
+.text h2::after{
+content:"";
+display:block;
+width:80px;
+height:3px;
+background:#d4af37;
+margin-top:10px;
+border-radius:5px;
 }
 
 .text p{
 margin-bottom:20px;
 text-align:justify;
+font-size:1.05rem;
 }
 
 .image{
 flex:1;
 min-width:300px;
+position:relative;
 }
 
 .image img{
 width:100%;
-border-radius:10px;
-box-shadow:0 10px 25px rgba(0,0,0,0.3);
+border-radius:15px;
+box-shadow:0 15px 35px rgba(0,0,0,0.35);
+border:4px solid #f4d58d;
+transition:0.4s;
 }
+
+.image img:hover{
+transform:scale(1.03);
+}
+
+/* HEADINGS */
 
 .center{
 text-align:center;
 margin-bottom:50px;
 font-size:3rem;
 font-family:'Cinzel',serif;
+color:#7a3b12;
 }
+
+/* CARDS */
 
 .cards{
 display:grid;
@@ -174,28 +304,43 @@ gap:30px;
 }
 
 .card{
-background:white;
+background:rgba(255,255,255,0.92);
 padding:20px;
-border-radius:10px;
-box-shadow:0 5px 15px rgba(0,0,0,0.2);
+border-radius:18px;
+box-shadow:0 10px 25px rgba(0,0,0,0.2);
 text-align:center;
+border:2px solid rgba(212,175,55,0.25);
+transition:0.4s;
+}
+
+.card:hover{
+transform:translateY(-8px);
 }
 
 .card img{
 width:100%;
 height:250px;
 object-fit:cover;
-border-radius:10px;
+border-radius:12px;
+border:3px solid #d4af37;
 }
 
 .card h3{
 margin:15px 0;
 color:#7a3b12;
+font-size:1.5rem;
+font-family:'Cinzel',serif;
 }
+
+/* GALLERY */
 
 .gallery{
 padding:80px 10%;
-background:#e9dbc8;
+background:
+linear-gradient(rgba(233,219,200,0.95), rgba(233,219,200,0.95)),
+url('kantha.jpg');
+background-size:cover;
+background-attachment:fixed;
 text-align:center;
 }
 
@@ -203,38 +348,48 @@ text-align:center;
 font-size:3rem;
 margin-bottom:40px;
 font-family:'Cinzel',serif;
+color:#7a3b12;
 }
 
 .gallery-grid{
 display:grid;
 grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
-gap:20px;
+gap:25px;
 }
 
 .gallery-grid img{
 width:100%;
 height:300px;
 object-fit:cover;
-border-radius:10px;
+border-radius:15px;
 transition:0.4s;
+border:4px solid rgba(255,255,255,0.7);
+box-shadow:0 10px 25px rgba(0,0,0,0.25);
 }
 
 .gallery-grid img:hover{
 transform:scale(1.05);
 }
 
+/* FOOTER */
+
 footer{
-background:#3a1d0b;
+background:
+linear-gradient(to right,#2a1407,#5a2a0c,#2a1407);
 color:white;
 text-align:center;
-padding:50px;
+padding:60px;
+border-top:3px solid #d4af37;
 }
 
 footer h2{
 font-family:'Cinzel',serif;
 margin-bottom:20px;
 color:#f4d58d;
+font-size:2rem;
 }
+
+/* MOBILE */
 
 @media(max-width:768px){
 
@@ -246,6 +401,10 @@ font-size:3rem;
 font-size:1.3rem;
 }
 
+.subtitle{
+width:95%;
+}
+
 .content{
 flex-direction:column;
 }
@@ -253,6 +412,10 @@ flex-direction:column;
 nav ul{
 flex-direction:column;
 align-items:center;
+}
+
+.team{
+width:95%;
 }
 
 }
